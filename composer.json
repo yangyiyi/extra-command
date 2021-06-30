@@ -1,0 +1,26 @@
+{
+    "name": "yangyiyi/extra-command",
+    "description": "Extra command to generate Services and Facades for Laravel project",
+    "type": "library",
+    "require": {},
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tommy Liew",
+            "email": "tommywudo1990@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "YangYiYi\\ExtraCommand\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "YangYiYi\\ExtraCommand\\ExtraCommandServiceProvider"
+            ]
+        }
+    }
+}
