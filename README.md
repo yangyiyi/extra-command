@@ -1,1 +1,1 @@
-# Extra Command to generate Service and Facade for laravel project
+# Extra Command to generate Service and Facade for laravel project.
