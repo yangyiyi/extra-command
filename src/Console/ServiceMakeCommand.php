@@ -119,6 +119,7 @@ class ServiceMakeCommand extends GeneratorCommand
      */
     protected function alreadyExists($rawName)
     {
+
         return class_exists($this->rootNamespace() . config('extra-command.service.exists') . $rawName);
     }
 
@@ -130,7 +131,7 @@ class ServiceMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('extra-command.service.namespace');
+        return $rootNamespace . config('extra-command.service.default');
     }
 
     /**

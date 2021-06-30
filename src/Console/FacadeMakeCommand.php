@@ -126,7 +126,7 @@ class FacadeMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('extra-command.facade.namespace');
+        return $rootNamespace . config('extra-command.facade.default');
     }
 
     protected function buildClass($name)
