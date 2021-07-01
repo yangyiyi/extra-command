@@ -83,6 +83,10 @@ class ServiceMakeCommand extends GeneratorCommand
     {
         $facade = Str::studly(class_basename($this->argument('name')));
 
+        if (Str::endsWith($facade, 'Service')) {
+            $facade = str_replace('Service', '', $facade);
+        }
+
         $this->call('make:facade', array_filter([
             'name'  => "{$facade}Facade"
         ]));

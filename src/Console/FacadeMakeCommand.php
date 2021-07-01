@@ -49,6 +49,10 @@ class FacadeMakeCommand extends GeneratorCommand
 
         $path = $this->getPath($name);
 
+        if (!Str::endsWith($name, 'Facade')) {
+            $name = $name . 'Facade';
+        }
+
         // Next, We will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
         // code is untouched. Otherwise, we will continue generating this class' files.
@@ -75,9 +79,13 @@ class FacadeMakeCommand extends GeneratorCommand
         }
     }
 
-    protected function createFacade()
+    protected function createService()
     {
         $service = Str::studly(class_basename($this->argument('name')));
+
+        if (Str::endsWith($service, 'Facade')) {
+            $service = str_replace('Facade', '', $service);
+        }
 
         $this->call('make:service', array_filter([
             'name'  => "{$service}Service"
