@@ -2,7 +2,9 @@
     "name": "yangyiyi/extra-command",
     "description": "Extra command to generate Services and Facades for Laravel project",
     "type": "library",
-    "require": {},
+    "require": {
+        "php": "^7.3|^8.0"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -11,6 +13,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "YangYiYi\\ExtraCommand\\": "src/"
