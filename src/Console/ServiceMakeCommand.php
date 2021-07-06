@@ -77,6 +77,17 @@ class ServiceMakeCommand extends GeneratorCommand
         if ($this->option('facade')) {
             $this->createFacade();
         }
+
+        if ($this->option('model')) {
+            $parameters = [];
+
+
+            if ($this->option('migration')) {
+                $parameters = ['-m'];
+            }
+
+            $this->call('make:model', $parameters);
+        }
     }
 
     protected function createFacade()
@@ -146,7 +157,9 @@ class ServiceMakeCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['facade', 'f', InputOption::VALUE_NONE, 'Create a facade for the model']
+            ['facade', 'f', InputOption::VALUE_NONE, 'Create a facade for the model'],
+            ['model', 'm', InputOption::VALUE_NONE, 'Create a new for the model'],
+            ['migration', 'g', InputOption::VALUE_NONE, 'Create a new migration file for the model'],
         ];
     }
 }
