@@ -45,7 +45,8 @@ class ServiceMakeCommand extends GeneratorCommand
             return false;
         }
 
-        $name = $this->qualifyClass($this->getNameInput());
+        $model = $this->getNameInput();
+        $name = $this->qualifyClass($model);
 
         if (!Str::endsWith($name, 'Service')) {
             $name = $name . 'Service';
@@ -79,11 +80,15 @@ class ServiceMakeCommand extends GeneratorCommand
         }
 
         if ($this->option('model')) {
-            $parameters = [];
-
+            $parameters = [
+                'name' => Str::remove('Service', $model),
+            ];
 
             if ($this->option('migration')) {
-                $parameters = ['-m'];
+                $parameters = [
+                    'name' => Str::remove('Service', $model),
+                    '--migration' => true
+                ];
             }
 
             $this->call('make:model', $parameters);

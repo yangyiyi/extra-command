@@ -45,7 +45,8 @@ class FacadeMakeCommand extends GeneratorCommand
             return false;
         }
 
-        $name = $this->qualifyClass($this->getNameInput());
+        $model = $this->getNameInput();
+        $name = $this->qualifyClass($model);
 
         if (!Str::endsWith($name, 'Facade')) {
             $name = $name . 'Facade';
@@ -79,11 +80,15 @@ class FacadeMakeCommand extends GeneratorCommand
         }
 
         if ($this->option('model')) {
-            $parameters = [];
-
+            $parameters = [
+                'name' => Str::remove('Facade', $model),
+            ];
 
             if ($this->option('migration')) {
-                $parameters = ['-m'];
+                $parameters = [
+                    'name' => Str::remove('Facade', $model),
+                    '--migration' => true
+                ];
             }
 
             $this->call('make:model', $parameters);
