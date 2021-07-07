@@ -36,44 +36,9 @@ class FacadeMakeCommand extends GeneratorCommand
      */
     public function handle()
     {
-        // First we need to ensure that the given name is not a reserved word within the PHP
-        // language and that the class name will actually be valid. If it is not valid we
-        // can error now and prevent from polluting the filesystem using invalid files.
-        if ($this->isReservedName($this->getNameInput())) {
-            $this->error('The name "' . $this->getNameInput() . '" is reserved by PHP.');
-
+        if (parent::handle() === false && !$this->option('force')) {
             return false;
         }
-
-        $model = $this->getNameInput();
-        $name = $this->qualifyClass($model);
-
-        if (!Str::endsWith($name, 'Facade')) {
-            $name = $name . 'Facade';
-        }
-
-        $path = $this->getPath($name);
-
-        // Next, We will check to see if the class already exists. If it does, we don't want
-        // to create the class and overwrite the user's code. So, we will bail out so the
-        // code is untouched. Otherwise, we will continue generating this class' files.
-        if ((!$this->hasOption('force') ||
-                !$this->option('force')) &&
-            $this->alreadyExists($this->getNameInput())
-        ) {
-            $this->error($this->type . ' already exists!');
-
-            return false;
-        }
-
-        // Next, we will generate the path to the location where this class' file should get
-        // written. Then, we will build the class and make the proper replacements on the
-        // stub files so that it gets the correctly formatted namespace and class name.
-        $this->makeDirectory($path);
-
-        $this->files->put($path, $this->sortImports($this->buildClass($name)));
-
-        $this->info($this->type . ' created successfully.');
 
         if ($this->option('service')) {
             $this->createService();
@@ -81,14 +46,11 @@ class FacadeMakeCommand extends GeneratorCommand
 
         if ($this->option('model')) {
             $parameters = [
-                'name' => Str::remove('Facade', $model),
+                'name' => Str::remove($this->type, $this->getNameInput()),
             ];
 
             if ($this->option('migration')) {
-                $parameters = [
-                    'name' => Str::remove('Facade', $model),
-                    '--migration' => true
-                ];
+                $parameters['--migration'] = true;
             }
 
             $this->call('make:model', $parameters);
@@ -99,13 +61,29 @@ class FacadeMakeCommand extends GeneratorCommand
     {
         $service = Str::studly(class_basename($this->argument('name')));
 
-        if (Str::endsWith($service, 'Facade')) {
-            $service = str_replace('Facade', '', $service);
+        if (Str::endsWith($service, $this->type)) {
+            $service = str_replace($this->type, '', $service);
         }
 
         $this->call('make:service', array_filter([
             'name'  => "{$service}Service"
         ]));
+    }
+
+    /**
+     * Get the desired class name from the input.
+     *
+     * @return string
+     */
+    protected function getNameInput()
+    {
+        $name = trim($this->argument('name'));
+
+        if (!Str::endsWith($name, $this->type)) {
+            $name = $name . $this->type;
+        }
+
+        return $name;
     }
 
     /**
