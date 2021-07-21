@@ -1,5 +1,18 @@
 # Extra Command to generate Service and Facade for Laravel.
 
+## Table of Contents
+
+  * [Requirement](#requirement)
+  * [Installation](#installation)
+  * [How to use](#how-to-use)
+    + [Create Service Only](#create-service-only)
+    + [Create Facade Only](#create-facade-only)
+    + [Create Service / Facade with Options](#create-service-facade-with-options)
+      - [Create by using make:service / make:facade command](#create-by-using-make-service-make:facade-command)
+    + [Options list](#options-list)
+  * [Changelog](#changelog)
+  * [License](#license)
+
 ## Requirement
 - PHP 7.3 and above.
 
