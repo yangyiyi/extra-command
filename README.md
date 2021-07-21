@@ -47,7 +47,9 @@ You may create service, facade, model and migration at the same time by using on
 #### Create by using make:service / make:facade command
 ```
 - php artisan make:service Account -a
+```
 or
+```
 - php artisan make:facade Account -a
 ```
 You may found `AccountService` under `app\Support\Services`, `AccountFacade` under `app\Support\Facades`, `Account` under `app\Models` (follow default laravel structure) and `create_account_table` under `database\migration` (follow default laravel structure).
