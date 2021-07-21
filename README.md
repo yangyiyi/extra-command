@@ -29,7 +29,7 @@ php artisan make:facade Account
 As example above, it will create the facade call `AccountFacade` under `app\Support\Facades`.
 
 ### Create Service / Facade with Options
-You may create service, facade, model and migration at the same time.
+You may create service, facade, model and migration at the same time by using one of the command below.
 
 #### Create by using make:service / make:facade command
 ```
@@ -41,10 +41,10 @@ You may found `AccountService` under `app\Support\Services`, `AccountFacade` und
 
 ### Options list
 ```
--a - Generate a migration, facade and model.
--f - Create a facade for the model.
--m - Create a new for the model.
--g - Create a new migration file for the model.
+-a = Generate a migration, facade and model.
+-f = Create a facade for the model.
+-m = Create a new for the model.
+-g = Create a new migration file for the model.
 ```
 
 ## Changelog
