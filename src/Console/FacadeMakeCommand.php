@@ -40,6 +40,12 @@ class FacadeMakeCommand extends GeneratorCommand
             return false;
         }
 
+        if ($this->option('all')) {
+            $this->input->setOption('service', true);
+            $this->input->setOption('model', true);
+            $this->input->setOption('migration', true);
+        }
+
         if ($this->option('service')) {
             $this->createService();
         }
@@ -151,6 +157,7 @@ class FacadeMakeCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
+            ['all', 'a', InputOption::VALUE_NONE, 'Generate a migration, service and model'],
             ['service', 's', InputOption::VALUE_NONE, 'Create a service for the model'],
             ['model', 'm', InputOption::VALUE_NONE, 'Create a new for the model'],
             ['migration', 'g', InputOption::VALUE_NONE, 'Create a new migration file for the model'],
