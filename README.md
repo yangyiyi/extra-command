@@ -52,7 +52,11 @@ or
 ```
 - php artisan make:facade Account -a
 ```
-You may found `AccountService` under `app\Support\Services`, `AccountFacade` under `app\Support\Facades`, `Account` under `app\Models` (follow default laravel structure) and `create_account_table` under `database\migration` (follow default laravel structure).
+You may found
+1. Service - `AccountService` under `app\Support\Services`,
+2. Facade - `AccountFacade` under `app\Support\Facades`,
+3. Model - `Account` under `app\Models` (follow default laravel structure) and
+4. Migration - `create_accounts_table` under `database\migration` (follow default laravel structure).
 
 ### Options list
 ```
