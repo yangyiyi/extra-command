@@ -46,11 +46,11 @@ You may create service, facade, model and migration at the same time by using on
 
 #### Create by using make:service / make:facade command
 ```
-- php artisan make:service Account -a
+php artisan make:service Account -a
 ```
 or
 ```
-- php artisan make:facade Account -a
+php artisan make:facade Account -a
 ```
 You may found 4 file as show below.
 1. Service - `AccountService.php` under `app\Support\Services`.
