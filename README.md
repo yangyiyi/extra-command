@@ -8,7 +8,7 @@
     + [Create Service Only](#create-service-only)
     + [Create Facade Only](#create-facade-only)
     + [Create Service / Facade with Options](#create-service-facade-with-options)
-      - [Create by using make:service / make:facade command](#create-by-using-make-service-make:facade-command)
+      + [Create by using make:service / make:facade command](#create-by-using-makeservice--makefacade-command)
     + [Options list](#options-list)
   * [Changelog](#changelog)
   * [License](#license)
