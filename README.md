@@ -15,6 +15,7 @@
 
 ## Requirement
 - PHP 7.3 and above.
+- Laravel 7 and above.
 
 ## Installation
 
@@ -67,9 +68,7 @@ You may found 4 file as show below.
 ```
 
 ## Changelog
-
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## License
-
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
